@@ -35,6 +35,7 @@ void drawRoom() {
         glutSolidCube(1);
     glPopMatrix();
 }
+
 void drawScreen() { //tela branca
     glPushMatrix();
         glTranslatef(0, 4, -9.5);
@@ -43,6 +44,7 @@ void drawScreen() { //tela branca
         glutSolidCube(1);
     glPopMatrix();
 }
+
 void drawStage() { // palco marrom 
     glPushMatrix();
         glTranslatef(0, 1, -8);
@@ -52,9 +54,9 @@ void drawStage() { // palco marrom
     glPopMatrix();
 }
 
-void drawChair(float x, float z) {
+void drawChair(float x, float y, float z) {
     glPushMatrix();
-        glTranslatef(x, 0.5, z);
+        glTranslatef(x, y + 0.5, z);
         glRotatef(180, 0, 1, 0);
 
         // base da poltrona
@@ -80,6 +82,8 @@ void drawChair(float x, float z) {
 
     glPopMatrix();
 }
+
+
 void drawLights() {
     GLUquadric *q = gluNewQuadric();
 
@@ -117,11 +121,11 @@ void display() {
     drawLights();
 
     // poltronas
-    for (float z = 2; z > -6; z -= 1.5) {
-        for (float x = -4; x <= 4; x += 1.5) {
-            drawChair(x, z);
-        }
-    }
+    for(int fil = 0; fil < 6; fil++){
+    	for(int col = 0; col < 6; col++){
+    		drawChair(-4+(1.5*col), 0.5*fil, -5+(1.5*fil));
+		}
+	}
 
     glutSwapBuffers();
 }
