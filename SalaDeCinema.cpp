@@ -83,11 +83,11 @@ void drawChair(float x, float y, float z) {
     glPopMatrix();
 }
 
-void drawStep(float z, float largura, float altura){
+void drawStep(float x, float y, float z, float largura, float altura, float comprimento){
 	glPushMatrix();
-		glTranslatef(0, 0, z);
-		glScalef(largura,altura,1.5);
-		glColor3f(0.2, 0.2, 0.2);
+		glTranslatef(x, y, z);
+		glScalef(largura, altura, comprimento);
+		glColor3f(0.1, 0.1, 0.1);
 		glutSolidCube(1);
 	glPopMatrix();
 }
@@ -131,7 +131,8 @@ void display() {
 
     // poltronas
     for(int fil = 0; fil < 6; fil++){
-    	drawStep(-5+(1.5*fil),6*1.5,0.5+fil);
+    	
+    	drawStep(0, 0.25*fil, -5+(1.5*fil), 6*1.5, 0.25+fil*0.5, 1.5);
     	for(int col = 0; col < 6; col++){
     		drawChair(-4+(1.5*col), 0.5*fil, -5+(1.5*fil));
 		}
