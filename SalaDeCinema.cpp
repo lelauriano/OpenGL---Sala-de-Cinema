@@ -27,7 +27,7 @@ void criarTextura() {
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 }
-void setupLighting() {
+/*void setupLighting() {
     glEnable(GL_LIGHTING);
 
     // Luz ambiente geral 
@@ -71,7 +71,7 @@ void setupLighting() {
     glLightfv(GL_LIGHT3, GL_DIFFUSE,  dif3);
     glLightfv(GL_LIGHT3, GL_SPECULAR, spec3);
     glLightf (GL_LIGHT3, GL_QUADRATIC_ATTENUATION, 0.06f);
-}
+}*/
 
 void setMaterial(float r, float g, float b,
                  float amb_factor,
@@ -278,7 +278,7 @@ void display() {
         0, 1, 0
     );
 
-    setupLighting();
+    //setupLighting();
 
     drawRoom();
     drawWallLamps();
