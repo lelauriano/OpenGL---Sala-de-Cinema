@@ -28,6 +28,50 @@ void criarTextura() {
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 }
 
+void drawTexturedCube(float size) {
+    float s = size / 2.0f;
+
+    glBegin(GL_QUADS);
+
+    // FRENTE
+    glTexCoord2f(0, 0); glVertex3f(-s, -s,  s);
+    glTexCoord2f(1, 0); glVertex3f( s, -s,  s);
+    glTexCoord2f(1, 1); glVertex3f( s,  s,  s);
+    glTexCoord2f(0, 1); glVertex3f(-s,  s,  s);
+
+    // TRÁS
+    glTexCoord2f(0, 0); glVertex3f( s, -s, -s);
+    glTexCoord2f(1, 0); glVertex3f(-s, -s, -s);
+    glTexCoord2f(1, 1); glVertex3f(-s,  s, -s);
+    glTexCoord2f(0, 1); glVertex3f( s,  s, -s);
+
+    // ESQUERDA
+    glTexCoord2f(0, 0); glVertex3f(-s, -s, -s);
+    glTexCoord2f(1, 0); glVertex3f(-s, -s,  s);
+    glTexCoord2f(1, 1); glVertex3f(-s,  s,  s);
+    glTexCoord2f(0, 1); glVertex3f(-s,  s, -s);
+
+    // DIREITA
+    glTexCoord2f(0, 0); glVertex3f( s, -s,  s);
+    glTexCoord2f(1, 0); glVertex3f( s, -s, -s);
+    glTexCoord2f(1, 1); glVertex3f( s,  s, -s);
+    glTexCoord2f(0, 1); glVertex3f( s,  s,  s);
+
+    // TOPO
+    glTexCoord2f(0, 0); glVertex3f(-s,  s,  s);
+    glTexCoord2f(1, 0); glVertex3f( s,  s,  s);
+    glTexCoord2f(1, 1); glVertex3f( s,  s, -s);
+    glTexCoord2f(0, 1); glVertex3f(-s,  s, -s);
+
+    // BASE
+    glTexCoord2f(0, 0); glVertex3f(-s, -s, -s);
+    glTexCoord2f(1, 0); glVertex3f( s, -s, -s);
+    glTexCoord2f(1, 1); glVertex3f( s, -s,  s);
+    glTexCoord2f(0, 1); glVertex3f(-s, -s,  s);
+
+    glEnd();
+}
+
 
 void drawWallLamp(float y, float z) {
     glPushMatrix();
@@ -154,14 +198,14 @@ void drawChair(float x, float y, float z) {
         // assento
         glPushMatrix();
             glScalef(0.75f, 0.35f, 0.75f);
-            glutSolidCube(1);
+             drawTexturedCube(1);
         glPopMatrix();
 
         // encosto
         glPushMatrix();
             glTranslatef(0, 0.45f, 0.30f);
             glScalef(0.75f, 0.75f, 0.18f);
-            glutSolidCube(1);
+            drawTexturedCube(1);
         glPopMatrix();
 
         // pernas 
